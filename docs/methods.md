@@ -3,7 +3,7 @@ sidebar_label: 'Methods'
 sidebar_position: 2
 ---
 
-# Methods
+# Ⓜ️ Methods
 
 This is a compendium of the methods within the plugin, as well as a description of their function.
 
@@ -76,7 +76,7 @@ Additionally, if a `radius` other than `-1` was given, the character might move 
 
 ### `moveTo(id: string, target: Position, config: MoveToConfig): void`
 
-Initiates movement of the character with the given [`id`](/api/characterdata#id-string) to the `target` [`Position`](/api/position). The movement will happen along one shortest path. See [MoveToConfig](./methods.html#movetoconfig) for pathfinding configurations.
+Initiates movement of the character with the given [`id`](/api/characterdata#id-string) to the `target` [`Position`](/api/position). The movement will happen along one shortest path. See [MoveToConfig](/usage/pathfinding) for pathfinding configurations.
 
 <div class="separator"></div>
 
@@ -115,3 +115,9 @@ Removes all registered characters from the plugin.
 The character with the given [`id`](/api/characterdata#id-string) will start to walk towards the character with the given `idToFollow` on a shortest path until he has a distance of `distance` to the character to follow.
 
 If the optional `closestPointIfBlocked` is set to `true`, the character will move to the closest point ([Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry)) to `idToFollow` that is reachable from `id` in the case that there does not exist a path between `id` and `idToFollow`.
+
+<div class="separator"></div>
+
+### `stopMovement(id: string)`
+
+Stops any automated movement such as random movement (`moveRandomly()`), following (`follow()`) or moving to a specified position (`moveTo()`) for the character with the given [`id`](/api/characterdata#id-string).

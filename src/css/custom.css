@@ -130,3 +130,20 @@ div[class^='announcementBarContent'] a:hover {
 .badge--bm {
     margin-bottom: 1rem;
 }
+
+.alert {
+    border: none;
+    color: white !important;
+}
+
+.alert a {
+    color: white !important;
+}
+
+.alert--primary {
+    background: linear-gradient(135deg, #13ABF3 0%, #2156B8 100%);
+}
+
+.alert--danger {
+    background: linear-gradient(135deg, #ef473a 0%, #cb2d3e 100%);
+}

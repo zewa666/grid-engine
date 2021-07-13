@@ -10,8 +10,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Annoraaq', // Usually your GitHub org/user name.
+  projectName: 'grid-engine', // Usually your repo name.
   themeConfig: {
     navbar: {
       logo: {
@@ -20,7 +20,7 @@ module.exports = {
       },
       items: [
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/Annoraaq/grid-engine',
           label: 'GitHub',
           position: 'right',
         },
@@ -46,8 +46,8 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
-            routeBasePath: '/'
+            'https://github.com/Annoraaq/grid-engine/edit/gh-pages/',
+            routeBasePath: '/foo'
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
