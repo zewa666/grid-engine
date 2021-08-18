@@ -451,6 +451,9 @@ describe("GridEngine", () => {
           walkingAnimationMapping: 3,
           speed: 2,
           collides: false,
+          collisionConfig: {
+            collidesWithTilemap: true,
+          },
         },
       ],
     });
@@ -461,6 +464,9 @@ describe("GridEngine", () => {
       speed: 2,
       walkingAnimationMapping: 3,
       collides: false,
+      collisionConfig: {
+        collidesWithTilemap: true,
+      },
     });
   });
 

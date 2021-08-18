@@ -1,3 +1,4 @@
+import { CollisionConfig } from "./../GridEngine";
 import { CharacterAnimation } from "./CharacterAnimation/CharacterAnimation";
 import { VectorUtils } from "./../Utils/VectorUtils";
 import { directionVector, oppositeDirection } from "./../Direction/Direction";
@@ -32,6 +33,7 @@ export interface CharConfig {
   container?: Phaser.GameObjects.Container;
   offsetX?: number;
   offsetY?: number;
+  collisionConfig?: CollisionConfig;
 }
 
 export class GridCharacter {
@@ -59,6 +61,7 @@ export class GridCharacter {
   private characterIndex = -1;
   private walkingAnimationMapping: WalkingAnimationMapping;
   private collides: boolean;
+  private collidesWithTilemap = true;
 
   constructor(private id: string, config: CharConfig) {
     if (typeof config.walkingAnimationMapping == "number") {
@@ -71,6 +74,11 @@ export class GridCharacter {
     this.tilemap = config.tilemap;
     this.speed = config.speed;
     this.collides = config.collides;
+
+    if (config.collisionConfig) {
+      this.collidesWithTilemap = config.collisionConfig.collidesWithTilemap;
+    }
+
     this.customOffset = new Vector2(config.offsetX || 0, config.offsetY || 0);
     this.tileSize = config.tileSize.clone();
 
@@ -175,13 +183,16 @@ export class GridCharacter {
     if (direction == Direction.NONE) return false;
     if (!this.collides) return false;
     const tilePosInDir = this.tilePosInDirection(direction);
-    const hasBlockingTile = this.tilemap.hasBlockingTile(
-      tilePosInDir,
-      oppositeDirection(this.toMapDirection(direction))
-    );
+    const hasBlockingTile =
+      this.collidesWithTilemap &&
+      this.tilemap.hasBlockingTile(
+        tilePosInDir,
+        oppositeDirection(this.toMapDirection(direction))
+      );
     const hasBlockingChar =
       this.tilemap.hasBlockingChar(tilePosInDir) &&
       !this.tilePos.equals(tilePosInDir);
+
     return hasBlockingTile || hasBlockingChar;
   }
 

@@ -66,8 +66,14 @@ export interface CharacterData {
   offsetY?: number;
   facingDirection?: Direction;
   collides?: boolean;
+  collisionConfig?: CollisionConfig;
 }
 
+export interface CollisionConfig {
+  collidesWithTilemap?: boolean;
+  charsInclude?: string[];
+  charsExclude?: string[];
+}
 export class GridEngine {
   private gridCharacters: Map<string, GridCharacter>;
   private tilemap: Phaser.Tilemaps.Tilemap;
@@ -229,6 +235,7 @@ export class GridEngine {
       offsetX: charData.offsetX,
       offsetY: charData.offsetY,
       collides: charData.collides === undefined ? true : charData.collides,
+      collisionConfig: charData.collisionConfig,
     };
 
     const gridChar = this.createCharacter(charData.id, charConfig);
